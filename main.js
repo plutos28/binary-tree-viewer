@@ -22,9 +22,9 @@ addNodeButton.addEventListener("click", () => {
         while(currentNode.value != newNode.value) { 
             if(+(newNode.value) < +(currentNode.value)) {
                 if(Object.keys(currentNode.children[0]).length === 0) {
-                    currentNode.children[0] = newNode;
+                    currentNode["children"][0] = newNode;
                 } else {
-                    currentNode = currentNode.children[0];
+                    currentNode = currentNode["children"][0]
                 }
             } else if((newNode.value) > +(currentNode.value)) {
                 if(Object.keys(currentNode.children[1]).length === 0) {
@@ -63,7 +63,7 @@ function displayTree() {
     let svg = d3.select("body").append("svg")
         .attr("width", width + margin.right + margin.left)
         .attr("height", height + margin.top + margin.bottom)
-    .append("g")
+        .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
     root = treeData[0];
@@ -90,16 +90,13 @@ function displayTree() {
             return "translate(" + d.x + "," + d.y + ")"; });
     
     nodeEnter.append("circle")
-        .attr("r", 10)
+        .attr("r", 20)
         .style("fill", "#fff");
     
     nodeEnter.append("text")
-        .attr("y", function(d) { 
-            return d.children || d._children ? -18 : 18; })
-        .attr("dy", ".35em")
         .attr("text-anchor", "middle")
-        .text(function(d) { return d.value; })
-        .style("fill-opacity", 1);
+        .attr("y", ".3em")
+        .text(d => d.value);
     
     // Declare the links…
     let link = svg.selectAll("path.link")
