@@ -20,13 +20,13 @@ addNodeButton.addEventListener("click", () => {
     } else {
         let currentNode = rootNode;
         while(currentNode.value != newNode.value) { 
-            if(newNode.value < currentNode.value) {
+            if(+(newNode.value) < +(currentNode.value)) {
                 if(Object.keys(currentNode.children[0]).length === 0) {
                     currentNode.children[0] = newNode;
                 } else {
                     currentNode = currentNode.children[0];
                 }
-            } else if(newNode.value > currentNode.value) {
+            } else if((newNode.value) > +(currentNode.value)) {
                 if(Object.keys(currentNode.children[1]).length === 0) {
                     currentNode.children[1] = newNode;
                 } else {
