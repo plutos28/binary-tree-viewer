@@ -49,8 +49,8 @@ function displayTree() {
       
     // ************** Generate the tree diagram	 *****************
     let margin = {top: 40, right: 120, bottom: 20, left: 120},
-        width = 960 - margin.right - margin.left,
-        height = 500 - margin.top - margin.bottom;
+        width = 2000 - margin.right - margin.left,
+        height = 1200 - margin.top - margin.bottom;
         
     let i = 0;
     
